@@ -41,23 +41,24 @@ SRCS is not vaporware. The core engine is already built and validated with rigor
 
 ## ⚡ Core Architecture
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+AI agent / client
+       |
+       v
+FastAPI validation + API-key authentication + rate limiting
+       |
+       v
+Deterministic policy engine (per-transaction + cumulative-window checks)
+       |
+       +---- blocked / approval required ----> audit event
+       |
+       v
+Role permission check + atomic workflow claim (EXECUTING)
+       |
+       v
+Bounded tool proxy
+       |
+       v
+Atomic final state + hash-chained audit event
 
 
 ### Key Safety Capabilities
